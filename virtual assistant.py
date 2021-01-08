@@ -3,6 +3,12 @@ import pyaudio
 import wave
 from gtts import gTTS
 from playsound import playsound
+from chatterbot import ChatBot
+from chatterbot.trainers import ChatterBotCorpusTrainer
+from pydub import AudioSegment
+from pydub.playback import play
+
+
 
 def recognize():
     r = sr.Recognizer() #defining the speech recognizer
@@ -72,5 +78,41 @@ def convert():
 def text_to_speech(text):
     converted = gTTS(text)
     converted.save('converted.mp3')
-    playsound('converted.mp3')
 
+        # create 1 sec of silence audio segment
+    one_sec_segment = AudioSegment.silent(duration=1000)  #duration in milliseconds
+
+    #read wav file to an audio segment
+    song = AudioSegment.from_wav(audio_in_file)
+
+    #Add above two audio segments    
+    final_song = one_sec_segment + song
+
+    #Either save modified audio
+    final_song.export(c'converted.wav', format="wav")
+
+    playsound('converted.wav')
+
+def train():
+    global chatbot
+    global trainer 
+    chatbot = ChatBot('Ron Obvious')
+    trainer = ChatterBotCorpusTrainer(chatbot)
+    trainer.train("chatterbot.corpus.english")
+
+def converse(text):
+    global chatbot
+    global trainer 
+    
+    response = chatbot.get_response(text)
+    return response 
+
+train()
+while True:
+    text_to_speech("aaaa say something")
+    try:
+        a = converse(convert())
+        print(a)
+        text_to_speech("aaaa"+str(a))
+    except Exception:
+        pass
