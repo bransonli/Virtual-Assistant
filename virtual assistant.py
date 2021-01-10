@@ -76,21 +76,10 @@ def convert():
     return str(recognize())
 
 def text_to_speech(text):
-    converted = gTTS(text)
+    converted = gTTS(str("hellolo "+ text))
     converted.save('converted.mp3')
-
-        # create 1 sec of silence audio segment
-    one_sec_segment = AudioSegment.silent(duration=1000)  #duration in milliseconds
-
-    #read wav file to an audio segment
-    song = AudioSegment.from_wav(audio_in_file)
-
-    #Add above two audio segments    
-    final_song = one_sec_segment + song
-
-    #Either save modified audio
-    final_song.export(c'converted.wav', format="wav")
-
+    sound = AudioSegment.from_mp3("converted.mp3")
+    sound.export("converted.wav", format="wav")
     playsound('converted.wav')
 
 def train():
@@ -103,16 +92,24 @@ def train():
 def converse(text):
     global chatbot
     global trainer 
-    
+
+    #loading pickled file 
+    chatbot = ChatBot('Ron Obvious')
     response = chatbot.get_response(text)
     return response 
+    
+def compiled():
+    while True:
+        text_to_speech("say something")
+        try:
+            a = converse(input("input"))
+            print(a)
+            text_to_speech(str(a))
+        except Exception:
+            pass
+            
+            
+#https://github.com/pender/chatbot-rnn/commit/85ada1c196759fe624ad24a0df4aacab9abb408b
 
-train()
-while True:
-    text_to_speech("aaaa say something")
-    try:
-        a = converse(convert())
-        print(a)
-        text_to_speech("aaaa"+str(a))
-    except Exception:
-        pass
+#https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/keras/save_and_load.ipynb
+
