@@ -102,14 +102,28 @@ def compiled():
     while True:
         text_to_speech("say something")
         try:
-            a = converse(input("input"))
+            a = converse(input("input: "))
             print(a)
             text_to_speech(str(a))
         except Exception:
             pass
+
+flag = True
+
+while True:
+    
+    if flag == True:
+        a = 'hi'
+        print('a',str(a))
+        flag = False
+
+    if flag == False:
+        b = converse(a)
+        a = converse(b)
+        
+        print('b: ',str(b))
+        print('a: ', str(a))
+
+    
             
             
-#https://github.com/pender/chatbot-rnn/commit/85ada1c196759fe624ad24a0df4aacab9abb408b
-
-#https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/keras/save_and_load.ipynb
-

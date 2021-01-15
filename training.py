@@ -1,10 +1,8 @@
 from chatterbot import ChatBot
-from chatterbot.trainers import ChatterBotCorpusTrainer
-import pickle
-
+from chatterbot.trainers import UbuntuCorpusTrainer
 
 chatbot = ChatBot('Ron Obvious')
-trainer = ChatterBotCorpusTrainer(chatbot)
-trainer.train("chatterbot.corpus.english")
+trainer = UbuntuCorpusTrainer(chatbot)
+trainer.train()
 
 
