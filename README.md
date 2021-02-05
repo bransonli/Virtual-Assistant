@@ -34,3 +34,9 @@ start speaking when say something gets printed in the console
 ### Usage
 how to call the function: convert()  
 returns: text version of what you say
+
+## Ascii Animation
+some of the frames of the same animation are seperated due to the limitations of github  
+put all the frames and the animation script in the same repository and run the script  
+animation will play in the terminal  
+in the case where the animation cannot be viewed propely just make text smaller in the terminal to see the whole thing
