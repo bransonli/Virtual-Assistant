@@ -1,4 +1,16 @@
 # Virtual-Assistant
+Download the database of the chatbot from this link and put it in the same repository as the bot  
+Could't put it here because file was too big  
+https://drive.google.com/file/d/1RAHOlFdUcn0kNo2GFhNOBHAhnKEB3nVQ/view?usp=sharing
+
+## Library Requirements
+pip3 install SpeechRecognition  
+pip3 install PyAudio  
+pip3 install Wave
+pip3 install gTTS  
+pip3 install playsound  
+pip3 install ChatterBot
+pip3 install pydub
 
 ## Conversational 
 loop is written in the code to demonstrate the conversing ability of the bot [run the code to see]  
